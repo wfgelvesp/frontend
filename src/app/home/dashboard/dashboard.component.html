@@ -1,0 +1,98 @@
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+  <mat-toolbar class="mat-elevation-z8"   >  
+      <button mat-icon-button (click)="snav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button> 
+      <span >App Domicilios</span>
+      <span class="example-spacer"></span>
+      <div class="row mr-2 ml-auto">
+        <ul class="row m-0 align-items-center">
+          <li>
+            <button
+              mat-button
+              [matMenuTriggerFor]="menu"
+              class="user mt-2 d-flex align-items-center"
+            >
+              <img src="../../../assets/img/user.jpg" alt="" class="user-image mr-1 p-2" />
+  
+              User Name
+              <mat-icon class="user-image-icon ml-1"
+                >keyboard_arrow_down</mat-icon
+              >
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item>
+                <mat-icon>exit_to_app</mat-icon>
+                Logout
+              </button>
+            </mat-menu>
+          </li>
+        </ul>
+      </div> 
+  </mat-toolbar>
+
+  <mat-sidenav-container class="mat-drawer-content1 example-sidenav-container" >
+    <mat-sidenav class=" mat-elevation-z8" opened="true"
+      #snav
+      [mode]="mobileQuery.matches ? 'over' : 'side'"
+      [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="56"
+    >
+      <mat-nav-list class="dashboard">
+        <a mat-list-item
+        (click)="toggleActive($event)"
+        routerLink="list-services" >
+        <mat-icon   mat-list-icon>room_service</mat-icon>
+        <p matLine >Servicios</p>
+        </a>
+        <a mat-list-item
+        (click)="toggleActive($event)"
+        routerLink="registerService" >
+        <mat-icon   mat-list-icon>add_circle</mat-icon>
+        <p matLine >Nuevo Servicio</p>
+        </a>
+        <mat-divider></mat-divider> 
+        <a mat-list-item
+        (click)="toggleActive($event)"
+        routerLink="list-delivery" >
+        <mat-icon   mat-list-icon>delivery_dining</mat-icon>
+        <p matLine >Domiciliarios</p>
+        </a> 
+        <a mat-list-item
+        (click)="toggleActive($event)"
+        routerLink="register-delivery" >
+        <mat-icon   mat-list-icon>add_circle</mat-icon>
+        <p matLine >Registrar Domiciliario</p>
+        </a>
+      
+        
+        <mat-divider></mat-divider> 
+        <!--Cliente-->
+        <a mat-list-item
+        (click)="toggleActive($event)"
+        routerLink="list-users" >
+        <mat-icon   mat-list-icon>people</mat-icon>
+        <p matLine>Clientes</p>
+        </a> 
+        <!--Cliente-->
+        <a mat-list-item
+        (click)="toggleActive($event)"
+        routerLink="register-user" >
+        <mat-icon   mat-list-icon>add_circle</mat-icon>
+        <p matLine>Nuevo Cliente</p>
+        </a>
+        <mat-divider></mat-divider>
+      </mat-nav-list>
+      <div class="position">
+        <app-footer> </app-footer> 
+      </div>
+    </mat-sidenav> 
+    <div >
+      <router-outlet></router-outlet> 
+       
+    </div>
+    
+    
+   
+  </mat-sidenav-container> 
+</div>
